@@ -1,11 +1,12 @@
 package comment
 
 import (
-	"github.com/kalfian/go-kafka/app/comment/controllers"
 	"github.com/kalfian/go-kafka/app/comment/handlers"
+	"github.com/kalfian/go-kafka/app/comment/services"
 )
 
 func ProvideHandler() handlers.CommentHandlerContract {
-	controller := controllers.NewCommentController()
-	return handlers.NewCommentHandler(controller)
+	services := services.NewCommentService()
+
+	return handlers.NewCommentHandler(services)
 }

@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/kalfian/go-kafka/app/comment/controllers"
+	"github.com/kalfian/go-kafka/app/comment/services"
 )
 
 type CommentHandlerContract interface {
@@ -10,12 +10,12 @@ type CommentHandlerContract interface {
 }
 
 type commentHandler struct {
-	c controllers.CommentControllerContract
+	srv services.CommentServiceContract
 }
 
-func NewCommentHandler(c controllers.CommentControllerContract) CommentHandlerContract {
+func NewCommentHandler(srv services.CommentServiceContract) CommentHandlerContract {
 	return &commentHandler{
-		c: c,
+		srv: srv,
 	}
 }
 
